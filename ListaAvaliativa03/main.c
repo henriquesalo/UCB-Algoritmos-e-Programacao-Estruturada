@@ -31,7 +31,6 @@ int numProdutos = 0;
 
 #include <stdlib.h>
 
-void limparTela();
 void cadastrarFabricante();
 void cadastrarProduto();
 void listarTodasMarcas();
@@ -49,7 +48,6 @@ int main() {
     int opcao;
 
     do {
-        limparTela();
         printf("\n-Xx-----Bem Vindo Ao Menu-----xX-");
         printf("\n\nDigite..\n\n");
         printf("[1] Para Cadastrar Fabricante\n");
@@ -65,7 +63,7 @@ int main() {
         printf("[11] Para Listar todos os produtos em ordem crescente de maior percentual de lucro\n");
         printf("[12] Para sair do programa\n");
 
-        printf("\nDigite a opção desejada: ");
+        printf("\nDigite a opcao desejada: ");
         scanf("%d", &opcao);
         getchar();
 
@@ -107,29 +105,18 @@ int main() {
                 printf("\nPrograma encerrado.\n");
                 break;
             default:
-                printf("Opção inválida. Digite novamente.\n");
+                printf("Opcao invalida. Digite novamente.\n");
         }
     } while (opcao != 12);
 
     return 0;
 }
 
-void limparTela() {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
-}
-
-
 void cadastrarFabricante() {
     if (numFabricantes == MAX_FABRICANTES) {
-        printf("Limite máximo de fabricantes atingido.\n");
+        printf("Limite maximo de fabricantes atingido.\n");
         return;
     }
-
-    limparTela();
   
     printf("\n=== Cadastro de Fabricante ===\n");
 
@@ -151,6 +138,7 @@ void cadastrarFabricante() {
 
     numFabricantes++;
     printf("Fabricante cadastrado com sucesso.\n");
+    
 }
 
 void cadastrarProduto() {
@@ -161,7 +149,7 @@ void cadastrarProduto() {
   
     printf("=== Cadastro de Produto ===\n");
 
-    printf("Descrição: ");
+    printf("Descricao: ");
     fgets(produtos[numProdutos].descricao, sizeof(produtos[numProdutos].descricao), stdin);
     produtos[numProdutos].descricao[strcspn(produtos[numProdutos].descricao, "\n")] = '\0';
 
@@ -356,7 +344,7 @@ void listarProdutosOrdemCrescentePercentualLucro() {
 
     printf("=== Lista de Produtos em Ordem Crescente de Maior Percentual de Lucro ===\n");
     for (int i = 0; i < numProdutos; i++) {
-        printf("Descrição: %s\n", produtos[i].descricao);
+        printf("Descricao: %s\n", produtos[i].descricao);
         printf("Peso: %.2f\n", produtos[i].peso);
         printf("Valor de Compra: R$ %.2f\n", produtos[i].valorCompra);
         printf("Valor de Venda: R$ %.2f\n", produtos[i].valorVenda);
