@@ -42,6 +42,7 @@ void listarFabricanteProdutoMaisBarato();
 void listarProdutosOrdemCrescenteValor();
 void listarProdutosOrdemCrescenteLucro();
 void listarProdutosOrdemCrescentePercentualLucro();
+void limpartela();
 
 
 int main() {
@@ -112,12 +113,21 @@ int main() {
     return 0;
 }
 
+void limpartela(){
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
 void cadastrarFabricante() {
     if (numFabricantes == MAX_FABRICANTES) {
         printf("Limite maximo de fabricantes atingido.\n");
         return;
     }
-  
+    
+    limpartela();
     printf("\n=== Cadastro de Fabricante ===\n");
 
     printf("Marca: ");
@@ -137,8 +147,9 @@ void cadastrarFabricante() {
     fabricantes[numFabricantes].uf[strcspn(fabricantes[numFabricantes].uf, "\n")] = '\0';
 
     numFabricantes++;
+    limpartela();
     printf("Fabricante cadastrado com sucesso.\n");
-    
+
 }
 
 void cadastrarProduto() {
@@ -146,7 +157,6 @@ void cadastrarProduto() {
         printf("Limite maximo de produtos atingido.\n");
         return;
     }
-  
     printf("=== Cadastro de Produto ===\n");
 
     printf("Descricao: ");
@@ -181,6 +191,7 @@ void cadastrarProduto() {
 }
 
 void listarTodasMarcas() {
+	limpartela();
     printf("=== Lista de Marcas ===\n");
     for (int i = 0; i < numFabricantes; i++) {
         printf("%s\n", fabricantes[i].marca);
@@ -188,6 +199,7 @@ void listarTodasMarcas() {
 }
 
 void listarTodosProdutos() {
+	limpartela();
     printf("=== Lista de Produtos ===\n");
     for (int i = 0; i < numProdutos; i++) {
         printf("Descricao: %s\n", produtos[i].descricao);
@@ -202,6 +214,7 @@ void listarTodosProdutos() {
 }
 
 void listarProdutosEstado() {
+	limpartela();
     char estado[UF_SIZE];
 
     printf("Digite o estado: ");
@@ -224,6 +237,7 @@ void listarProdutosEstado() {
 }
 
 void listarProdutosMarca() {
+	limpartela();;
     char marca[50];
 
     printf("Digite a marca: ");
@@ -246,6 +260,7 @@ void listarProdutosMarca() {
 }
 
 void listarEstadoProdutoMaisCaro() {
+	limpartela();
     float maiorValor = 0;
     char estadoMaisCaro[UF_SIZE];
 
@@ -261,6 +276,7 @@ void listarEstadoProdutoMaisCaro() {
 }
 
 void listarFabricanteProdutoMaisBarato() {
+	limpartela();
     float menorValor = produtos[0].valorVenda;
 
     for (int i = 1; i < numProdutos; i++) {
@@ -278,6 +294,7 @@ void listarFabricanteProdutoMaisBarato() {
 }
 
 void listarProdutosOrdemCrescenteValor() {
+	limpartela();
     Produto temp;
 
     for (int i = 0; i < numProdutos - 1; i++) {
@@ -304,6 +321,7 @@ void listarProdutosOrdemCrescenteValor() {
 }
 
 void listarProdutosOrdemCrescenteLucro() {
+	limpartela();
     Produto temp;
 
     for (int i = 0; i < numProdutos - 1; i++) {
@@ -330,6 +348,7 @@ void listarProdutosOrdemCrescenteLucro() {
 }
 
 void listarProdutosOrdemCrescentePercentualLucro() {
+	limpartela();
     Produto temp;
 
     for (int i = 0; i < numProdutos - 1; i++) {
